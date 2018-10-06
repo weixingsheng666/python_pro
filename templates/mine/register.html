@@ -1,0 +1,79 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>注册界面</title>
+{% endblock %}
+
+{% block extcss %}
+    <link rel="stylesheet" href="{% static 'mine/css/register.css' %}">
+{% endblock %}
+
+
+
+{%  block content %}
+    <div class="register">
+         <div class="back"><a href="{% url 'axf:mine' %}">
+             <span class=" glyphicon glyphicon-remove ">
+             </span> </a>
+         </div>
+
+        <form action="{% url 'axf:register' %}"
+              method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+             <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">账号</span>
+                <input id="account" type="text" class="form-control" placeholder="账号" aria-describedby="basic-addon1" name="account">
+             </div>
+             <span class="error" id="accounterr">用户名存在</span>
+
+             <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">密码</span>
+                <input id="password" type="password" class="form-control" placeholder="密码长度6~12位数" aria-describedby="basic-addon1" name="password">
+             </div>
+             <span class="error" id="pasworderr">密码不合法</span>
+
+             <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">验证</span>
+                <input id="mypassword" type="password" class="form-control" placeholder="密码长度6~12位数" aria-describedby="basic-addon1" name="mypassword">
+             </div>
+             <span class="error" id="mypassworderr">验证密码不正确</span>
+
+             <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">昵称</span>
+                <input id="account" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="name">
+             </div>
+
+             <div class="input-group tel-view">
+                <span class="input-group-addon" id="basic-addon1">电话</span>
+                <input id="tel" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="tel">
+                 <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+             </div>
+
+
+             <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">地址</span>
+                <input id="address" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" name="address">
+             </div>
+
+             <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">头像</span>
+                <input  type="file" name="file" >
+              </div>
+
+
+             <input class="btn btn-primary" value="注册" id="subButton" type="submit">
+        </form>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block extjs %}
+    <script src="{% static 'mine/js/register.js' %}"></script>
+{% endblock %}
